@@ -5,39 +5,45 @@
     <style>
 
       table.format {
-        width: 800px;
+        width: 66%;
       }
 
       td.format {
+        width: 50%;
+        
       }
 
       table.data {
          border: 1px solid black;
          text-align:left;
-         width: 100%;
+         width: 66%;
       }
 
       td.data {
          border: 1px solid black;
          text-align:left;
-         width:33%;
       }
     </style>
     <body>
-        <table class="data">
-            <tr>
-                <td class="data">Main Hand AP:</td>
-                <td class="data"><input id="MHAP" type="number" oninput="updateDoc();" value=0 min=0></td>
-                <td class="data">Awakening AP:</td>
-                <td class="data"><input id="AwAP" type="number" oninput="updateDoc();" value=0 min=0></td>
-                <td class="data">DP:</td>
-                <td class="data"><input id="DP" type="number" oninput="updateDoc();" value=0 min=0></td>
-            </tr>
-        </table>     
-        
+        <center>
         <table class="format">
             <tr>
-                <td class="format">
+                <td class="format" colspan=2><center>
+                    <table>
+                        <tr>
+                            <td>Main Hand AP:</td>
+                            <td><input id="MHAP" type="number" oninput="updateDoc();" value=0 min=0></td>
+                            <td>Awakening AP:</td>
+                            <td><input id="AwAP" type="number" oninput="updateDoc();" value=0 min=0></td>
+                            <td>DP:</td>
+                            <td><input id="DP" type="number" oninput="updateDoc();" value=0 min=0></td>
+                        </tr>
+                    </table>
+                </center></td>
+            </tr>     
+        
+            <tr>
+                <td class="format"><center>
                     <!--Renowned AP Table -->
                     <table class="data"> 
                         <tr>
@@ -48,22 +54,22 @@
                         <tr>
                             <td class="data">Current:</td>
                             <td class="data" id="curRen"></td>
-                            <td class="data" id="curAP"></td>
+                            <td class="data" id="curRenAP"></td>
                         </tr>
                         <tr>
                             <td class="data">Upgrade:</td>
                             <td class="data" id="nexRenAP"></td>
-                            <td class="data" id="nexAP"></td>
+                            <td class="data" id="nexRenAPB"></td>
                         </tr>
                         <tr>
                             <td class="data">Downgrade:</td>
                             <td class="data" id="preRenAP"></td>
-                            <td class="data" id="preAP"></td>
+                            <td class="data" id="preRenAPB"></td>
                         </tr>
                     </table>
-                </td>
+                </center></td>
 
-                <td class="format">
+                <td class="format"><center>
                     <!--Renowned DP Table -->
                     <table class="data"> 
                         <tr>
@@ -74,7 +80,7 @@
                         <tr>
                             <td class="data">Current:</td>
                             <td class="data" id="curRen2"></td>
-                            <td class="data" id="curDP"></td>
+                            <td class="data" id="curRenDP"></td>
                         </tr>
                         <tr>
                             <td class="data">Upgrade:</td>
@@ -86,11 +92,11 @@
                             <td class="data" id="preRenDPB"></td>
                         </tr>
                     </table>
-                </td>
+                </center></td>
 
             </tr>
             <tr>
-                <td class="format">
+                <td class="format"><center>
                     <!--Mainhand Table -->
                     <table class="data"> 
                         <tr>
@@ -114,37 +120,9 @@
                             <td class="data" id="preMHB"></td>
                         </tr>
                     </table>
-                </td>
+                </center></td>
                 
-                <td class="format">
-                    <!--Awakening Table -->
-                    <table class="data"> 
-                        <tr>
-                            <td class="data"></td>
-                            <td class="data">AW AP</td>
-                            <td class="data">AP Bonus</td>
-                        </tr>
-                        <tr>
-                            <td class="data">Current:</td>
-                            <td class="data" id="curAWAP"></td>
-                            <td class="data" id="curAWB"></td>
-                        </tr>
-                        <tr>
-                            <td class="data">Upgrade:</td>
-                            <td class="data" id="nexAWAP"></td>
-                            <td class="data" id="nexAWB"></td>
-                        </tr>
-                        <tr>
-                            <td class="data">Downgrade:</td>
-                            <td class="data" id="preAWAP"></td>
-                            <td class="data" id="preAWB"></td>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-
-            <tr>
-                 <td class="format">
+                <td class="format"><center>
                     <!--DP Table -->
                     <table class="data"> 
                         <tr>
@@ -168,8 +146,35 @@
                             <td class="data">-1%</td>
                         </tr>
                     </table>
-                 </td>
-                 <td class="format"></td>
+                </center></td>
+            </tr>
+
+            <tr>
+                 <td class="format"><center>
+                    <!--Awakening Table -->
+                    <table class="data"> 
+                        <tr>
+                            <td class="data"></td>
+                            <td class="data">AW AP</td>
+                            <td class="data">AP Bonus</td>
+                        </tr>
+                        <tr>
+                            <td class="data">Current:</td>
+                            <td class="data" id="curAWAP"></td>
+                            <td class="data" id="curAWB"></td>
+                        </tr>
+                        <tr>
+                            <td class="data">Upgrade:</td>
+                            <td class="data" id="nexAWAP"></td>
+                            <td class="data" id="nexAWB"></td>
+                        </tr>
+                        <tr>
+                            <td class="data">Downgrade:</td>
+                            <td class="data" id="preAWAP"></td>
+                            <td class="data" id="preAWB"></td>
+                        </tr>
+                    </table>    
+                </center></td>
             </tr>
 
 
@@ -230,6 +235,7 @@
                 <td class="data" id="nexDPB"></td>
             </tr>
         </table>
+        </center>
     </body>
 </html>
 

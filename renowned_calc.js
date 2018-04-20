@@ -17,7 +17,7 @@ var awap_index = 0;
 var dp_index = 0;
 var renownscore = 0;
 
-function getCurrentRenAPIndex(MHAP,AwAP,DP){
+function getCurrentRenAPIndex(){
     var index = 0;
     for(var len = renscore_ap_threshhold.length; index < len && renscore_ap_threshhold[index] <= renownscore; index++){
     }
@@ -25,7 +25,7 @@ function getCurrentRenAPIndex(MHAP,AwAP,DP){
     return index;
 }
 
-function getCurrentRenDPIndex(MHAP,AwAP,DP){
+function getCurrentRenDPIndex(){
     var index = 0;
     for(var len = renscore_dp_threshhold.length; index < len && renscore_dp_threshhold[index] <= renownscore; index++){
     }
@@ -51,8 +51,9 @@ function getCurrentDPIndex(DP){
 
 
 function updateIndices(MHAP,AwAP,DP){
-    renownap_index = getCurrentRenAPIndex(MHAP,AwAP,DP);
-    renowndp_index = getCurrentRenDPIndex(MHAP,AwAP,DP);
+    renownscore = Math.floor(((MHAP + AwAP)/2) + DP);
+    renownap_index = getCurrentRenAPIndex();
+    renowndp_index = getCurrentRenDPIndex();
     mhap_index = getCurrentAPIndex(MHAP);
     awap_index = getCurrentAPIndex(AwAP);
     dp_index = getCurrentDPIndex(DP);
@@ -62,7 +63,6 @@ function updateDoc(){
     var MHAP = document.getElementById("MHAP").valueAsNumber;
     var AwAP = document.getElementById("AwAP").valueAsNumber;
     var DP = document.getElementById("DP").valueAsNumber;
-    renownscore = Math.floor(((MHAP + AwAP)/2) + DP);
     updateIndices(MHAP,AwAP,DP);
 
     //Previous Tier Values
@@ -122,17 +122,17 @@ function updateDoc(){
     //MORE TABLES OH BOY
     //Renown AP
     document.getElementById("curRen").innerHTML = renownscore;
-    document.getElementById("curAP").innerHTML = renscore_ap_bonus[renownap_index];
+    document.getElementById("curRenAP").innerHTML = renscore_ap_bonus[renownap_index];
 
     document.getElementById("nexRenAP").innerHTML = "+" + (renscore_ap_threshhold[renownap_index + 1] - renownscore);
-    document.getElementById("nexAP").innerHTML = "+" + (renscore_ap_bonus[renownap_index + 1] - renscore_ap_bonus[renownap_index]);
+    document.getElementById("nexRenAPB").innerHTML = "+" + (renscore_ap_bonus[renownap_index + 1] - renscore_ap_bonus[renownap_index]);
 
     document.getElementById("preRenAP").innerHTML = "-" + (renownscore - renscore_ap_threshhold[renownap_index] + 1);
-    document.getElementById("preAP").innerHTML = "-" + (renscore_ap_bonus[renownap_index] - renscore_ap_bonus[renownap_index - 1]);
+    document.getElementById("preRenAPB").innerHTML = "-" + (renscore_ap_bonus[renownap_index] - renscore_ap_bonus[renownap_index - 1]);
 
     //Renown DP
     document.getElementById("curRen2").innerHTML = renownscore;
-    document.getElementById("curDP").innerHTML = renscore_dp_bonus[renowndp_index];
+    document.getElementById("curRenDP").innerHTML = renscore_dp_bonus[renowndp_index];
     
     document.getElementById("nexRenDP").innerHTML = "+" + (renscore_dp_threshhold[renowndp_index + 1] - renownscore);
     document.getElementById("nexRenDPB").innerHTML = "+" + (renscore_dp_bonus[renowndp_index + 1] - renscore_dp_bonus[renowndp_index]);
