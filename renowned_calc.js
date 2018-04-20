@@ -14,7 +14,7 @@ function getCurrentRenAPBonus(MAP,AwAP,DP){
     var renownscore = ((MAP + AwAP)/2) + DP;
     var index = 0;
     for(index = 0, len = arr.length; index < len && renscore_ap_threshhold[index] < renownscore; index++){
-    }
+    };
     return renscore_ap_bonus[index];
 }
 
