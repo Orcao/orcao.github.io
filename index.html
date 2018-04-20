@@ -3,9 +3,28 @@
         <script type="text/javascript" src="renowned_calc.js"></script>
     </head>
     <body>
-        <form>
-        <input type="button" value="click" onclick="updateDoc()"/>
-        </form>
+        <table>
+            <tr>
+                <td>
+                        Main Hand AP:
+                </td>
+                <td>
+                        <input id="MHAP" type="number" oninput="updateDoc();" value = 0>
+                </td>
+                <td>
+                        Awakening AP:
+                </td>
+                <td>
+                        <input id="AwAP" type="number" oninput="updateDoc();" value = 0>
+                </td>
+                <td>
+                        DP:
+                </td>
+                <td>
+                        <input id="DP" type="number" oninput="updateDoc();" value = 0>
+                </td>
+            </tr>
+        </table>
         <table>
             <tr>
                 <td></td>
@@ -59,7 +78,7 @@
                 <td id="nexDPThr"></td>
                 <td id="nexDPB"></td>
             </tr>
-        </table>>
+        </table>
     </body>
 </html>
 

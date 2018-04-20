@@ -16,8 +16,8 @@ var mhap_index = 0;
 var awap_index = 0;
 var dp_index = 0;
 
-function getCurrentRenAPIndex(MAP,AwAP,DP){
-    var renownscore = ((MAP + AwAP)/2) + DP;
+function getCurrentRenAPIndex(MHAP,AwAP,DP){
+    var renownscore = ((MHAP + AwAP)/2) + DP;
     var index = 0;
     for(var len = renscore_ap_threshhold.length; index < len && renscore_ap_threshhold[index] <= renownscore; index++){
     }
@@ -25,8 +25,8 @@ function getCurrentRenAPIndex(MAP,AwAP,DP){
     return index;
 }
 
-function getCurrentRenDPIndex(MAP,AwAP,DP){
-    var renownscore = ((MAP + AwAP)/2) + DP;
+function getCurrentRenDPIndex(MHAP,AwAP,DP){
+    var renownscore = ((MHAP + AwAP)/2) + DP;
     var index = 0;
     for(var len = renscore_dp_threshhold.length; index < len && renscore_dp_threshhold[index] <= renownscore; index++){
     }
@@ -60,11 +60,11 @@ function updateIndices(MHAP,AwAP,DP){
 }
 
 function updateDoc(){
-    var MHAP = 171;
-    var AwAP = 172;
-    var DP = 224;
-
+    var MHAP = document.getElementById("MHAP").valueAsNumber;
+    var AwAP = document.getElementById("AwAP").valueAsNumber;
+    var DP = document.getElementById("DP").valueAsNumber;
     updateIndices(MHAP,AwAP,DP);
+
     //Previous Tier Values
     var temp_index =((renownap_index <= 0) ? 0 : (renownap_index - 1));
     document.getElementById("preRAPThr").innerHTML = renscore_ap_threshhold[temp_index];
@@ -91,7 +91,7 @@ function updateDoc(){
     document.getElementById("curRAPB").innerHTML = renscore_ap_bonus[renownap_index];
     document.getElementById("curMHAPThr").innerHTML = ap_threshhold[mhap_index];
     document.getElementById("curMHAPB").innerHTML = ap_bonus[mhap_index];
-    document.getElementById("curAwAPThr").innerHTML = ap_threshhold[mhap_index];
+    document.getElementById("curAwAPThr").innerHTML = ap_threshhold[awap_index];
     document.getElementById("curAwAPB").innerHTML = ap_bonus[awap_index];
     document.getElementById("curRDPThr").innerHTML = renscore_dp_threshhold[renowndp_index];
     document.getElementById("curRDPB").innerHTML = renscore_dp_bonus[renowndp_index];
