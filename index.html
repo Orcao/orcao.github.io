@@ -3,206 +3,231 @@
         <script type="text/javascript" src="renowned_calc.js"></script>
     </head>
     <style>
-        table, th, td {
-            border: 1px solid black;
-        }
+
+      table.format {
+        width: 800px;
+      }
+
+      td.format {
+      }
+
+      table.data {
+         border: 1px solid black;
+         text-align:left;
+         width: 100%;
+      }
+
+      td.data {
+         border: 1px solid black;
+         text-align:left;
+         width:33%;
+      }
     </style>
     <body>
-        <table>
+        <table class="data">
             <tr>
-                <td>
-                        Main Hand AP:
+                <td class="data">Main Hand AP:</td>
+                <td class="data"><input id="MHAP" type="number" oninput="updateDoc();" value=0 min=0></td>
+                <td class="data">Awakening AP:</td>
+                <td class="data"><input id="AwAP" type="number" oninput="updateDoc();" value=0 min=0></td>
+                <td class="data">DP:</td>
+                <td class="data"><input id="DP" type="number" oninput="updateDoc();" value=0 min=0></td>
+            </tr>
+        </table>     
+        
+        <table class="format">
+            <tr>
+                <td class="format">
+                    <!--Renowned AP Table -->
+                    <table class="data"> 
+                        <tr>
+                            <td class="data"></td>
+                            <td class="data">Renown</td>
+                            <td class="data">AP Bonus</td>
+                        </tr>
+                        <tr>
+                            <td class="data">Current:</td>
+                            <td class="data" id="curRen"></td>
+                            <td class="data" id="curAP"></td>
+                        </tr>
+                        <tr>
+                            <td class="data">Upgrade:</td>
+                            <td class="data" id="nexRenAP"></td>
+                            <td class="data" id="nexAP"></td>
+                        </tr>
+                        <tr>
+                            <td class="data">Downgrade:</td>
+                            <td class="data" id="preRenAP"></td>
+                            <td class="data" id="preAP"></td>
+                        </tr>
+                    </table>
                 </td>
-                <td>
-                        <input id="MHAP" type="number" oninput="updateDoc();" value = 0 min = 0>
+
+                <td class="format">
+                    <!--Renowned DP Table -->
+                    <table class="data"> 
+                        <tr>
+                            <td class="data"></td>
+                            <td class="data">Renown</td>
+                            <td class="data">DP Bonus</td>
+                        </tr>
+                        <tr>
+                            <td class="data">Current:</td>
+                            <td class="data" id="curRen2"></td>
+                            <td class="data" id="curDP"></td>
+                        </tr>
+                        <tr>
+                            <td class="data">Upgrade:</td>
+                            <td class="data" id="nexRenDP"></td>
+                            <td class="data" id="nexRenDPB"></td>
+                        <tr>
+                            <td class="data">Downgrade:</td>
+                            <td class="data" id="preRenDP"></td>
+                            <td class="data" id="preRenDPB"></td>
+                        </tr>
+                    </table>
                 </td>
-                <td>
-                        Awakening AP:
+
+            </tr>
+            <tr>
+                <td class="format">
+                    <!--Mainhand Table -->
+                    <table class="data"> 
+                        <tr>
+                            <td class="data"></td>
+                            <td class="data">MH AP</td>
+                            <td class="data">AP Bonus</td>
+                        </tr>
+                        <tr>
+                            <td class="data">Current:</td>
+                            <td class="data" id="curMHAP"></td>
+                            <td class="data" id="curMHB"></td>
+                        </tr>
+                        <tr>
+                            <td class="data">Upgrade:</td>
+                            <td class="data" id="nexMHAP"></td>
+                            <td class="data" id="nexMHB"></td>
+                        </tr>
+                        <tr>
+                            <td class="data">Downgrade:</td>
+                            <td class="data" id="preMHAP"></td>
+                            <td class="data" id="preMHB"></td>
+                        </tr>
+                    </table>
                 </td>
-                <td>
-                        <input id="AwAP" type="number" oninput="updateDoc();" value = 0 min = 0>
-                </td>
-                <td>
-                        DP:
-                </td>
-                <td>
-                        <input id="DP" type="number" oninput="updateDoc();" value = 0 min = 0>
+                
+                <td class="format">
+                    <!--Awakening Table -->
+                    <table class="data"> 
+                        <tr>
+                            <td class="data"></td>
+                            <td class="data">AW AP</td>
+                            <td class="data">AP Bonus</td>
+                        </tr>
+                        <tr>
+                            <td class="data">Current:</td>
+                            <td class="data" id="curAWAP"></td>
+                            <td class="data" id="curAWB"></td>
+                        </tr>
+                        <tr>
+                            <td class="data">Upgrade:</td>
+                            <td class="data" id="nexAWAP"></td>
+                            <td class="data" id="nexAWB"></td>
+                        </tr>
+                        <tr>
+                            <td class="data">Downgrade:</td>
+                            <td class="data" id="preAWAP"></td>
+                            <td class="data" id="preAWB"></td>
+                        </tr>
+                    </table>
                 </td>
             </tr>
+
+            <tr>
+                 <td class="format">
+                    <!--DP Table -->
+                    <table class="data"> 
+                        <tr>
+                            <td class="data"></td>
+                            <td class="data">DP</td>
+                            <td class="data">DR % Bonus</td>
+                        </tr>
+                        <tr>
+                            <td class="data">Current:</td>
+                            <td class="data" id="curDP"></td>
+                            <td class="data" id="curDRB"></td>
+                        </tr>
+                        <tr>
+                            <td class="data">Upgrade:</td>
+                            <td class="data" id="nexDP"></td>
+                            <td class="data">+1%</td>
+                        </tr>
+                        <tr>
+                            <td class="data">Downgrade:</td>
+                            <td class="data" id="preDP"></td>
+                            <td class="data">-1%</td>
+                        </tr>
+                    </table>
+                 </td>
+                 <td class="format"></td>
+            </tr>
+
+
         </table>
 
-        <!--Renowned AP Table -->
-        <table> 
+        <!-- Massive Table -->
+        <table class="data">
             <tr>
-                <td></td>
-                <td>Renown</td>
-                <td>AP Bonus</td>
+                <td class="data"></td>
+                <td class="data">Renowned AP Threshhold</td>
+                <td class="data">Renowned AP Bonus</td>
+                <td class="data">Mainhand AP Threshhold</td>
+                <td class="data">Mainhand AP Bonus</td>
+                <td class="data">Awakening AP Threshhold</td>
+                <td class="data">Awakening AP Bonus</td>
+                <td class="data">Renowned DP Threshhold</td>
+                <td class="data">Renowned DP Bonus</td>
+                <td class="data">DP Threshhold</td>
+                <td class="data">DR% Bonus</td>
             </tr>
             <tr>
-                <td>Current:</td>
-                <td id="curRen"></td>
-                <td id="curAP"></td>
+                <td class="data">Previous:</td>
+                <td class="data" id="preRAPThr"></td>
+                <td class="data" id="preRAPB"></td>
+                <td class="data" id="preMHAPThr"></td>
+                <td class="data" id="preMHAPB"></td>
+                <td class="data" id="preAwAPThr"></td>
+                <td class="data" id="preAwAPB"></td>
+                <td class="data" id="preRDPThr"></td>
+                <td class="data" id="preRDPB"></td>
+                <td class="data" id="preDPThr"></td>
+                <td class="data" id="preDPB"></td>
             </tr>
             <tr>
-                <td>Upgrade:</td>
-                <td id="nexRenAP"></td>
-                <td id="nexAP"></td>
+                <td class="data">Current:</td>
+                <td class="data" id="curRAPThr"></td>
+                <td class="data" id="curRAPB"></td>
+                <td class="data" id="curMHAPThr"></td>
+                <td class="data" id="curMHAPB"></td>
+                <td class="data" id="curAwAPThr"></td>
+                <td class="data" id="curAwAPB"></td>
+                <td class="data" id="curRDPThr"></td>
+                <td class="data" id="curRDPB"></td>
+                <td class="data" id="curDPThr"></td>
+                <td class="data" id="curDPB"></td>
             </tr>
             <tr>
-                <td>Downgrade:</td>
-                <td id="preRenAP"></td>
-                <td id="preAP"></td>
-            </tr>
-        </table>
-
-        <!--Renowned DP Table -->
-        <table> 
-            <tr>
-                <td></td>
-                <td>Renown</td>
-                <td>DP Bonus</td>
-            </tr>
-            <tr>
-                <td>Current:</td>
-                <td id="curRen2"></td>
-                <td id="curDP"></td>
-            </tr>
-            <tr>
-                <td>Upgrade:</td>
-                <td id="nexRenDP"></td>
-                <td id="nexRenDPB"></td>
-            <tr>
-                <td>Downgrade:</td>
-                <td id="preRenDP"></td>
-                <td id="preRenDPB"></td>
-            </tr>
-        </table>
-
-
-        <!--Mainhand Table -->
-        <table> 
-            <tr>
-                <td></td>
-                <td>MH AP</td>
-                <td>AP Bonus</td>
-            </tr>
-            <tr>
-                <td>Current:</td>
-                <td id="curMHAP"></td>
-                <td id="curMHB"></td>
-            </tr>
-            <tr>
-                <td>Upgrade:</td>
-                <td id="nexMHAP"></td>
-                <td id="nexMHB"></td>
-            </tr>
-            <tr>
-                <td>Downgrade:</td>
-                <td id="preMHAP"></td>
-                <td id="preMHB"></td>
-            </tr>
-        </table>
-
-        <!--Awakening Table -->
-        <table> 
-            <tr>
-                <td></td>
-                <td>AW AP</td>
-                <td>AP Bonus</td>
-            </tr>
-            <tr>
-                <td>Current:</td>
-                <td id="curAWAP"></td>
-                <td id="curAWB"></td>
-            </tr>
-            <tr>
-                <td>Upgrade:</td>
-                <td id="nexAWAP"></td>
-                <td id="nexAWB"></td>
-            </tr>
-            <tr>
-                <td>Downgrade:</td>
-                <td id="preAWAP"></td>
-                <td id="preAWB"></td>
-            </tr>
-        </table>
-
-        <!--DP Table -->
-        <table> 
-            <tr>
-                <td></td>
-                <td>DP</td>
-                <td>DR % Bonus</td>
-            </tr>
-            <tr>
-                <td>Current:</td>
-                <td id="curDP"></td>
-                <td id="curDRB"></td>
-            </tr>
-            <tr>
-                <td>Upgrade:</td>
-                <td id="nexDP"></td>
-                <td>+1%</td>
-            </tr>
-            <tr>
-                <td>Downgrade:</td>
-                <td id="preDP"></td>
-                <td>-1%</td>
-            </tr>
-        </table>
-
-        <table>
-            <tr>
-                <td></td>
-                <td>Renowned AP Threshhold</td>
-                <td>Renowned AP Bonus</td>
-                <td>Mainhand AP Threshhold</td>
-                <td>Mainhand AP Bonus</td>
-                <td>Awakening AP Threshhold</td>
-                <td>Awakening AP Bonus</td>
-                <td>Renowned DP Threshhold</td>
-                <td>Renowned DP Bonus</td>
-                <td>DP Threshhold</td>
-                <td>DR% Bonus</td>
-            </tr>
-            <tr>
-                <td>Previous:</td>
-                <td id="preRAPThr"></td>
-                <td id="preRAPB"></td>
-                <td id="preMHAPThr"></td>
-                <td id="preMHAPB"></td>
-                <td id="preAwAPThr"></td>
-                <td id="preAwAPB"></td>
-                <td id="preRDPThr"></td>
-                <td id="preRDPB"></td>
-                <td id="preDPThr"></td>
-                <td id="preDPB"></td>
-            </tr>
-            <tr>
-                <td>Current:</td>
-                <td id="curRAPThr"></td>
-                <td id="curRAPB"></td>
-                <td id="curMHAPThr"></td>
-                <td id="curMHAPB"></td>
-                <td id="curAwAPThr"></td>
-                <td id="curAwAPB"></td>
-                <td id="curRDPThr"></td>
-                <td id="curRDPB"></td>
-                <td id="curDPThr"></td>
-                <td id="curDPB"></td>
-            </tr>
-            <tr>
-                <td>Next:</td>
-                <td id="nexRAPThr"></td>
-                <td id="nexRAPB"></td>
-                <td id="nexMHAPThr"></td>
-                <td id="nexMHAPB"></td>
-                <td id="nexAwAPThr"></td>
-                <td id="nexAwAPB"></td>
-                <td id="nexRDPThr"></td>
-                <td id="nexRDPB"></td>
-                <td id="nexDPThr"></td>
-                <td id="nexDPB"></td>
+                <td class="data">Next:</td>
+                <td class="data" id="nexRAPThr"></td>
+                <td class="data" id="nexRAPB"></td>
+                <td class="data" id="nexMHAPThr"></td>
+                <td class="data" id="nexMHAPB"></td>
+                <td class="data" id="nexAwAPThr"></td>
+                <td class="data" id="nexAwAPB"></td>
+                <td class="data" id="nexRDPThr"></td>
+                <td class="data" id="nexRDPB"></td>
+                <td class="data" id="nexDPThr"></td>
+                <td class="data" id="nexDPB"></td>
             </tr>
         </table>
     </body>
