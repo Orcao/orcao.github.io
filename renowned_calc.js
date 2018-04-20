@@ -15,9 +15,9 @@ var renowndp_index = 0;
 var mhap_index = 0;
 var awap_index = 0;
 var dp_index = 0;
+var renownscore = 0;
 
 function getCurrentRenAPIndex(MHAP,AwAP,DP){
-    var renownscore = ((MHAP + AwAP)/2) + DP;
     var index = 0;
     for(var len = renscore_ap_threshhold.length; index < len && renscore_ap_threshhold[index] <= renownscore; index++){
     }
@@ -26,7 +26,6 @@ function getCurrentRenAPIndex(MHAP,AwAP,DP){
 }
 
 function getCurrentRenDPIndex(MHAP,AwAP,DP){
-    var renownscore = ((MHAP + AwAP)/2) + DP;
     var index = 0;
     for(var len = renscore_dp_threshhold.length; index < len && renscore_dp_threshhold[index] <= renownscore; index++){
     }
@@ -63,6 +62,7 @@ function updateDoc(){
     var MHAP = document.getElementById("MHAP").valueAsNumber;
     var AwAP = document.getElementById("AwAP").valueAsNumber;
     var DP = document.getElementById("DP").valueAsNumber;
+    renownscore = Math.floor(((MHAP + AwAP)/2) + DP);
     updateIndices(MHAP,AwAP,DP);
 
     //Previous Tier Values
@@ -99,7 +99,6 @@ function updateDoc(){
     document.getElementById("curDPB").innerHTML = dp_bonus[dp_index]+"%";
 
     //Next Tier Values
-    //Previous Tier Values
     var temp_index =((renownap_index + 1 >= renscore_ap_threshhold.length) ? 0 : (renownap_index + 1));
     document.getElementById("nexRAPThr").innerHTML = renscore_ap_threshhold[temp_index];
     document.getElementById("nexRAPB").innerHTML = renscore_ap_bonus[temp_index];
@@ -119,4 +118,55 @@ function updateDoc(){
     temp_index =((dp_index + 1 >= dp_threshhold.length) ? 0 : (dp_index + 1));
     document.getElementById("nexDPThr").innerHTML = dp_threshhold[temp_index];
     document.getElementById("nexDPB").innerHTML = dp_bonus[temp_index]+"%";
+
+    //MORE TABLES OH BOY
+    //Renown AP
+    document.getElementById("curRen").innerHTML = renownscore;
+    document.getElementById("curAP").innerHTML = renscore_ap_bonus[renownap_index];
+
+    document.getElementById("nexRenAP").innerHTML = "+" + (renscore_ap_threshhold[renownap_index + 1] - renownscore);
+    document.getElementById("nexAP").innerHTML = "+" + (renscore_ap_bonus[renownap_index + 1] - renscore_ap_bonus[renownap_index]);
+
+    document.getElementById("preRenAP").innerHTML = "-" + (renownscore - renscore_ap_threshhold[renownap_index] + 1);
+    document.getElementById("preAP").innerHTML = "-" + (renscore_ap_bonus[renownap_index] - renscore_ap_bonus[renownap_index - 1]);
+
+    //Renown DP
+    document.getElementById("curRen2").innerHTML = renownscore;
+    document.getElementById("curDP").innerHTML = renscore_dp_bonus[renowndp_index];
+    
+    document.getElementById("nexRenDP").innerHTML = "+" + (renscore_dp_threshhold[renowndp_index + 1] - renownscore);
+    document.getElementById("nexRenDPB").innerHTML = "+" + (renscore_dp_bonus[renowndp_index + 1] - renscore_dp_bonus[renowndp_index]);
+    
+    document.getElementById("preRenDP").innerHTML = "-" + (renownscore - renscore_dp_threshhold[renowndp_index] + 1);
+    document.getElementById("preRenDPB").innerHTML = "-" + (renscore_dp_bonus[renowndp_index] - renscore_dp_bonus[renowndp_index - 1]);
+
+    //MHAP
+    document.getElementById("curMHAP").innerHTML = MHAP;
+    document.getElementById("curMHB").innerHTML = ap_bonus[mhap_index];
+
+    document.getElementById("nexMHAP").innerHTML = "+" + (ap_threshhold[mhap_index + 1] - MHAP);
+    document.getElementById("nexMHB").innerHTML = "+" + (ap_bonus[mhap_index + 1] - ap_bonus[mhap_index]);
+
+    document.getElementById("preMHAP").innerHTML = "-" + (MHAP - ap_threshhold[mhap_index] + 1);
+    document.getElementById("preMHB").innerHTML =  "-" + (ap_bonus[mhap_index] - ap_bonus[mhap_index - 1]);
+
+    //AWAP
+    document.getElementById("curAWAP").innerHTML = AwAP;
+    document.getElementById("curAWB").innerHTML =  ap_bonus[awap_index];
+
+    document.getElementById("nexAWAP").innerHTML = "+" + (ap_threshhold[awap_index + 1] - AwAP);
+    document.getElementById("nexAWB").innerHTML = "+" + (ap_bonus[awap_index + 1] - ap_bonus[awap_index]);
+
+    document.getElementById("preAWAP").innerHTML = "-" + (AwAP - ap_threshhold[awap_index] + 1);
+    document.getElementById("preAWB").innerHTML = "-" + (ap_bonus[awap_index] - ap_bonus[awap_index - 1]);
+
+    //DR
+    document.getElementById("curDP").innerHTML = DP;
+    document.getElementById("curDRB").innerHTML = (dp_bonus[dp_index]) + "%";
+
+    document.getElementById("nexDP").innerHTML =  "+" + (dp_threshhold[dp_index + 1] - DP);
+
+    document.getElementById("preDP").innerHTML =  "-" + (DP - dp_threshhold[dp_index] + 1); 
+
+
 }
