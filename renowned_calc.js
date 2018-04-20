@@ -22,4 +22,5 @@ function test(){
     document.getElementById("t1").innerHTML = getCurrentRenAPBonus(0,0,0);
     document.getElementById("t2").innerHTML = getCurrentRenAPBonus(171,172,224);
     document.getElementById("t3").innerHTML = getCurrentRenAPBonus(650,650,650);
+    document.getElementById("t4").innerHTML = "TEST VALUES";
 }
