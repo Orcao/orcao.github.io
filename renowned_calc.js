@@ -84,7 +84,7 @@ function updateDoc(){
     
     temp_index =((dp_index <= 0) ? 0 : (dp_index - 1));
     document.getElementById("preDPThr").innerHTML = dp_threshhold[temp_index];
-    document.getElementById("preDPB").innerHTML = dp_bonus[temp_index];
+    document.getElementById("preDPB").innerHTML = dp_bonus[temp_index]+"%";
 
     //Current Tier Values
     document.getElementById("curRAPThr").innerHTML = renscore_ap_threshhold[renownap_index];
@@ -96,7 +96,7 @@ function updateDoc(){
     document.getElementById("curRDPThr").innerHTML = renscore_dp_threshhold[renowndp_index];
     document.getElementById("curRDPB").innerHTML = renscore_dp_bonus[renowndp_index];
     document.getElementById("curDPThr").innerHTML = dp_threshhold[dp_index];
-    document.getElementById("curDPB").innerHTML = dp_bonus[dp_index];
+    document.getElementById("curDPB").innerHTML = dp_bonus[dp_index]+"%";
 
     //Next Tier Values
     //Previous Tier Values
@@ -118,5 +118,5 @@ function updateDoc(){
     
     temp_index =((dp_index + 1 >= dp_threshhold.length) ? 0 : (dp_index + 1));
     document.getElementById("nexDPThr").innerHTML = dp_threshhold[temp_index];
-    document.getElementById("nexDPB").innerHTML = dp_bonus[temp_index];
+    document.getElementById("nexDPB").innerHTML = dp_bonus[temp_index]+"%";
 }
